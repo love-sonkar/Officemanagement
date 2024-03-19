@@ -1,5 +1,6 @@
 package org.OfficeManagment;
 
+import org.OfficeManagment.helper.InputException;
 import org.OfficeManagment.service.AdminService;
 
 import java.util.InputMismatchException;
@@ -12,21 +13,18 @@ public class App {
         while (true) {
             System.out.println("[1] Login As Admin");
             System.out.println("[0] Exit");
-            System.out.print("Enter Your Option : ");
-            int input = ss.nextInt();
+            int input = new InputException().handleInputExceptionInt("Enter Your Option : ");
             if (input == 1) {
                 System.out.print("Enter your Username : ");
-                String username = ss.next().trim();
+                String username = ss.nextLine().trim();
                 System.out.print("Enter Your Password : ");
-                String password = ss.next().trim();
+                String password = ss.nextLine().trim();
                 AdminService.loginMethod(username, password);
             } else if (input == 0) {
                 break;
-            } else {
+            }else {
                 System.out.println("Wrong Input");
             }
-
         }
-
     }
 }

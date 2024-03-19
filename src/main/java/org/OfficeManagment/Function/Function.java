@@ -1,5 +1,6 @@
 package org.OfficeManagment.Function;
 
+import org.OfficeManagment.helper.InputException;
 import org.OfficeManagment.service.ClientService;
 import org.OfficeManagment.service.EmployeeService;
 
@@ -15,8 +16,7 @@ public class Function {
             System.out.println("[2] Show all Clients");
             System.out.println("[3] Create Invoice");
             System.out.println("[0] Exit");
-            System.out.print("Enter Your Option : ");
-            int input = ss.nextInt();
+            int input = new InputException().handleInputExceptionInt("Enter Your Option: ");
             switch (input) {
                 case 1: {
                     EmployeeService.oprationLoop();

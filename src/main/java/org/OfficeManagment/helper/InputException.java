@@ -1,14 +1,37 @@
 package org.OfficeManagment.helper;
 
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class InputException {
-    public static Scanner scan = new Scanner(System.in);
-    public static void handleInputException(String value,String type) throws InputMismatchException {
-
+    public int handleInputExceptionInt(String printvalue) throws InputMismatchException {
+        int input =0;
+        while (true){
+        try {
+            Scanner scan = new Scanner(System.in);
+            System.out.print(printvalue);
+            input = scan.nextInt();
+            break;
+        } catch (InputMismatchException e) {
+            System.out.println("wrong input");
+        }
+        }
+        return input;
     }
-    public static void handleInputException(String value,Integer type) throws InputMismatchException {
-
+    public Long handleInputExceptionLong(String printvalue) throws InputMismatchException {
+        Long input;
+        while (true){
+            try {
+                Scanner scan = new Scanner(System.in);
+                System.out.print(printvalue);
+                input = scan.nextLong();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("wrong input");
+            }
+        }
+        return input;
     }
+
 }
