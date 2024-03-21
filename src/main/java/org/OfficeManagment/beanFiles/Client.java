@@ -1,11 +1,12 @@
 package org.OfficeManagment.beanFiles;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Entity
 public class Client {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -14,14 +15,16 @@ public class Client {
 
     private Long number;
 
+    private String password;
+
     public Client() {
     }
 
-    public Client(int id, String name, String email, Long number) {
-        this.id = id;
+    public Client(String name, String email, Long number,String password) {
         this.name = name;
         this.email = email;
         this.number = number;
+        this.password = password;
     }
 
     public int getId() {
@@ -54,5 +57,13 @@ public class Client {
 
     public void setNumber(Long number) {
         this.number = number;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

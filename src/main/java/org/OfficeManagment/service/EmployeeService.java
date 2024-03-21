@@ -1,5 +1,7 @@
 package org.OfficeManagment.service;
 
+import org.OfficeManagment.Function.Function;
+import org.OfficeManagment.beanFiles.Admin;
 import org.OfficeManagment.beanFiles.Employee;
 import org.OfficeManagment.helper.FactoryHelper;
 import org.OfficeManagment.helper.HqlMethods;
@@ -102,6 +104,51 @@ public class EmployeeService {
         ss.close();
 
     }
+
+    public static void employeeLogin(String email,String password){
+        Session ss = FactoryHelper.getSession().openSession();
+        Transaction tx= ss.beginTransaction();
+        try{
+            Query q= ss.createQuery(HqlMethods.employeeByEmail);
+            q.setParameter("x",email);
+            List<Employee> emp = q.list();
+            if(emp.size()<=0){
+                System.out.println("Invalid Credentials");
+            }else {
+                Employee emp1 = emp.get(0);
+                if(!password.equals(emp1.getPassword())){
+                    System.out.println("password Incorrect");
+                }else{
+                    System.out.println("Login Success");
+                    Function.employeeLogedIn(emp1.getId());
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+            tx.commit();
+    }
+
+    public static void changePassword(int employeeId){
+        Scanner scan=new Scanner(System.in);
+        Session ss = FactoryHelper.getSession().openSession();
+        Transaction tx = ss.beginTransaction();
+        Employee currentEmployee = ss.get(Employee.class,employeeId);
+        System.out.print("Enter Your Current Password : ");
+        String currentPass = scan.nextLine().trim();
+        System.out.print("Enter Your New Password : ");
+        String newPass = scan.nextLine().trim();
+        if(!currentPass.equals(currentEmployee.getPassword())){
+            System.out.println("Password Incorrect Please Try Again");
+        }else {
+            currentEmployee.setPassword(newPass);
+            ss.persist(currentEmployee);
+            System.out.println("Password Changed...");
+        }
+        tx.commit();
+        ss.close();
+    }
+
 
     public static void oprationLoop() {
         while (true) {

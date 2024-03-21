@@ -16,6 +16,7 @@ public class Employee {
     private Long number;
     private String department;
     private String role;
+    private String password;
 
     public Employee() {
     }
@@ -26,6 +27,7 @@ public class Employee {
         this.number = number;
         this.department = department;
         this.role = role;
+        this.password =email;
     }
 
     public Employee(int id, String name, String email, Long number, String department, String role) {
@@ -35,6 +37,7 @@ public class Employee {
         this.number = number;
         this.department = department;
         this.role = role;
+        this.password = email;
     }
 
     public int getId() {
@@ -83,6 +86,14 @@ public class Employee {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
