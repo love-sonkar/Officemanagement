@@ -1,6 +1,7 @@
 package org.OfficeManagment.service;
 
 import org.OfficeManagment.beanFiles.Client;
+import org.OfficeManagment.beanFiles.Project;
 import org.OfficeManagment.helper.FactoryHelper;
 import org.OfficeManagment.helper.HqlMethods;
 import org.OfficeManagment.helper.InputException;
@@ -167,6 +168,22 @@ public class ClientService {
         ss.close();
     }
 
+    public static void showClientProject(int id){
+        Session ss = FactoryHelper.getSession().openSession();
+        Transaction tx = ss.beginTransaction();
+        Client c1 = ss.get(Client.class, id);
+        List<Project> projectList =  c1.getProject();
+        if (projectList.size()<=0) {
+            System.out.println("No projects");
+        } else {
+            System.out.println(" Id Title Description Status Client_Name");
+            for (Project pp : projectList) {
+                System.out.println(pp.getId() + " " + pp.getTitle() +" " + pp.getDescription() +" " + "Status : " + pp.getStatus() );
+            }
+        }
+        tx.commit();
+        ss.close();
+    }
 
     public static void clientLoggedIn(int id) {
         System.out.println("Logged As Client");
@@ -179,11 +196,11 @@ public class ClientService {
             int input = new InputException().handleInputExceptionInt("Enter Your Option: ");
             switch (input) {
                 case 1: {
-                    System.out.println("Create Project");
+                    ProjectService.addProjcet(id);
                     break;
                 }
                 case 2: {
-                    System.out.println("Show My Project");
+                    showClientProject(id);
                     break;
                 }
                 case 3: {

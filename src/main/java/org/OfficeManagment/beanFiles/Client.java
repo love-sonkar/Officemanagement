@@ -1,9 +1,8 @@
 package org.OfficeManagment.beanFiles;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Client {
@@ -16,6 +15,9 @@ public class Client {
     private Long number;
 
     private String password;
+
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
+    private List<Project> project;
 
     public Client() {
     }
@@ -65,5 +67,13 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Project> getProject() {
+        return project;
+    }
+
+    public void setProject(List<Project> project) {
+        this.project = project;
     }
 }

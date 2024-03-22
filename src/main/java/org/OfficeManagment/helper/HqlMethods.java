@@ -6,6 +6,7 @@ public class HqlMethods {
     public static String getAllEmployee = "From Employee";
     public static String getAllClients = "From Client";
     public static String clientByEmail = "From Client where email =:x";
+    public static String getAllProjects = "From Project";
 
 
 }

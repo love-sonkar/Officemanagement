@@ -25,10 +25,11 @@
         </property>
 
         <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
+
         <mapping class="org.OfficeManagment.beanFiles.Admin" />
         <mapping class="org.OfficeManagment.beanFiles.Employee" />
         <mapping class="org.OfficeManagment.beanFiles.Client" />
+        <mapping class="org.OfficeManagment.beanFiles.Project" />
 
 
 

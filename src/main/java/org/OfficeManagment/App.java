@@ -1,18 +1,26 @@
 package org.OfficeManagment;
 
+import org.OfficeManagment.beanFiles.Admin;
 import org.OfficeManagment.helper.FactoryHelper;
 import org.OfficeManagment.helper.InputException;
 import org.OfficeManagment.service.AdminService;
 import org.OfficeManagment.service.ClientService;
 import org.OfficeManagment.service.EmployeeService;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
        Session session= FactoryHelper.getSession().openSession();
+        System.out.println("-----------------------------------");
+        System.out.println("-----------------------------------");
+        System.out.println("-----------------------------------");
         System.out.println("-----Office Management Project-----");
+        System.out.println("-----------------------------------");
+        System.out.println("-----------------------------------");
+        System.out.println("-----------------------------------");
         Scanner ss = new Scanner(System.in);
         while (true) {
             System.out.println("[1] Login As Admin");
