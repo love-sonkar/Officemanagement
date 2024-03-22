@@ -16,18 +16,24 @@ import java.util.Scanner;
 public class EmployeeService {
 
     public static void listEmployee() {
-        System.out.println("=== Employee List ====");
+        System.out.println("===========================================");
+        System.out.println("===========================================");
+        System.out.println("<<<<<<<<<<<<<< Employee List >>>>>>>>>>>>>>");
+        System.out.println("===========================================");
+        System.out.println("===========================================");
         Session ss = FactoryHelper.getSession().openSession();
         Transaction tx = ss.beginTransaction();
         Query q = ss.createQuery(HqlMethods.getAllEmployee);
         List<Employee> elist = q.list();
         if (elist.size() <= 0) {
-            System.out.println("No Employee found Please Add");
+            System.out.println();
+            System.out.println("|------------- No Employee found Please Add --------------| ");
+            System.out.println();
         } else {
-            System.out.println("  Id    Name          Email             Number          Department      Role");
+            System.out.println("----- Id --- Name ----------- Email ------------- Number --------- Department ------- Role --------");
             for (Employee ee : elist) {
-                System.out.println("  " + ee.getId() + "    " + ee.getName() + "    " + ee.getEmail() + "   "
-                        + ee.getNumber() + "   " + ee.getDepartment() + "  " + ee.getRole());
+                System.out.println("!===" + ee.getId() + " " + ee.getName() + " " + ee.getEmail() + " "
+                        + ee.getNumber() + " " + ee.getDepartment() + "  " + ee.getRole() + "===!");
             }
         }
         tx.commit();

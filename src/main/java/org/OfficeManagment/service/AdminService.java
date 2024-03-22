@@ -20,13 +20,13 @@ public class AdminService {
             q.setParameter("x", username);
             List<Admin> aa = q.list();
             if (aa.size() <= 0) {
-                System.out.println("Invalid Credentials");
+                System.out.println("<<<<<<<<<<<<< Invalid Credentials >>>>>>>>>>>>>>>");
             } else {
                 Admin admin = aa.get(0);
                 if (!password.equals(admin.getPassword())) {
-                    System.out.println("password Incorrect");
+                    System.out.println("<<<<<<<<<<< Password Incorrect >>>>>>>>>>>>>>");
                 } else {
-                    System.out.println("Login Success");
+                    System.out.println("!------------- Login Success ------------!");
                     Function.adminLogedIn(admin.getId());
                 }
             }
@@ -48,11 +48,15 @@ public class AdminService {
         System.out.print("Enter Your New Password : ");
         String newPass = scan.nextLine().trim();
         if(!currentPass.equals(currentAdmin.getPassword())){
-            System.out.println("Password Incorrect Please Try Again");
+            System.out.println();
+            System.out.println("<<<<<<<<<<<<<< Password Incorrect Please Try Again >>>>>>>>>>>>>>>");
+            System.out.println();
         }else {
             currentAdmin.setPassword(newPass);
             ss.persist(currentAdmin);
+            System.out.println();
             System.out.println("Password Changed...");
+            System.out.println();
         }
         tx.commit();
         ss.close();
