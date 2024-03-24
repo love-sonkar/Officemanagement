@@ -13,7 +13,7 @@ use officemanagement;
 
 ## Create admin table for your project using
 ```bash
-create table admin values(id int, username varchar(255), password varchar(255));
+create table admin (id int, username varchar(255), password varchar(255));
 ```
 ## Insert data for your admin
 

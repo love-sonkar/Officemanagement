@@ -168,6 +168,10 @@ public class ClientService {
         ss.close();
     }
 
+    public static void clientProjectOpration(){
+
+    }
+
     public static void showClientProject(int id){
         Session ss = FactoryHelper.getSession().openSession();
         Transaction tx = ss.beginTransaction();
@@ -180,6 +184,7 @@ public class ClientService {
             for (Project pp : projectList) {
                 System.out.println(pp.getId() + " " + pp.getTitle() +" " + pp.getDescription() +" " + "Status : " + pp.getStatus() );
             }
+            clientProjectOpration();
         }
         tx.commit();
         ss.close();

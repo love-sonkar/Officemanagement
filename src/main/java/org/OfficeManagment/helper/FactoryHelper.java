@@ -11,7 +11,7 @@ public class FactoryHelper {
 
     static public SessionFactory getSession(){
         if(sessionFac==null) {
-            sessionFac = new Configuration().configure().buildSessionFactory();
+            sessionFac = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         }
         return sessionFac;
     }

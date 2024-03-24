@@ -68,7 +68,7 @@ public class Function {
         } else {
             System.out.println(" Id Title Description Status Client_Name");
             for (Project pp : projectList) {
-                System.out.println(pp.getId() + " " + pp.getTitle() +" " + pp.getDescription() +" " + "Status : " + pp.getStatus() + " " + pp.getClient() );
+                System.out.println(pp.getId() + " " + pp.getTitle() +" " + pp.getDescription() +" " + "Status : " + pp.getStatus() + " " + pp.getClient().getName() );
             }
         }
         tx.commit();
@@ -86,7 +86,7 @@ public class Function {
             System.out.println("You don't have any project");
         }else {
             for(Project pp : projectList) {
-                if(pp.getId() != id){
+                if(id != pp.getId()){
                     System.out.println("Wrong Input");
                 }else {
                     Project currentProject = ss.get(Project.class,id);
@@ -113,10 +113,6 @@ public class Function {
                                 break;
                             }
                             case 0 :break;
-                            default: {
-                                System.out.println("Wrong Input");
-                                 break;
-                            }
                         }
                         if(input ==0 || input ==1 || input ==2 || input ==3){
                             break;

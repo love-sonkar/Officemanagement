@@ -31,10 +31,14 @@ public class EmployeeService {
             System.out.println();
         } else {
             System.out.println("----- Id --- Name ----------- Email ------------- Number --------- Department ------- Role --------");
+            System.out.println("---------------------------------------------------------------------------------------------------");
             for (Employee ee : elist) {
-                System.out.println("!===" + ee.getId() + " " + ee.getName() + " " + ee.getEmail() + " "
-                        + ee.getNumber() + " " + ee.getDepartment() + "  " + ee.getRole() + "===!");
+                System.out.println(" Id : " + ee.getId() + " , Name : " + ee.getName() + " Email : " + ee.getEmail() + " , Number : "
+                        + ee.getNumber() + " , Department " + ee.getDepartment() + " , Role : " + ee.getRole());
             }
+            System.out.println();
+            System.out.println("-----------------------------------------------------------------------------------");
+            System.out.println();
         }
         tx.commit();
         ss.close();

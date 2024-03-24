@@ -19,6 +19,7 @@ public class Client {
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     private List<Project> project;
 
+
     public Client() {
     }
 
